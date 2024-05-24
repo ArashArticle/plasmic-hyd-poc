@@ -1,7 +1,7 @@
-import {defineConfig} from 'vite';
-import {hydrogen} from '@shopify/hydrogen/vite';
-import {oxygen} from '@shopify/mini-oxygen/vite';
-import {vitePlugin as remix} from '@remix-run/dev';
+import { defineConfig } from 'vite';
+import { hydrogen } from '@shopify/hydrogen/vite';
+import { oxygen } from '@shopify/mini-oxygen/vite';
+import { vitePlugin as remix } from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
@@ -18,6 +18,17 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: [
+      '@plasmicapp/data-sources-context',
+      '@plasmicapp/loader-core',
+      '@plasmicapp/loader-fetcher',
+      '@plasmicapp/loader-react',
+      '@plasmicapp/loader-splits',
+      '@plasmicapp/prepass',
+      '@plasmicapp/query',
+    ],
+  },
   build: {
     // Allow a strict Content-Security-Policy
     // withtout inlining assets as base64:
